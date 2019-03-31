@@ -1,0 +1,11 @@
+int double str if while return print
+identifer a _ab a12345678901234567 
+1 100 12345678901234567890 100 1 12345678901234567890
+1.123123 1.23e+123 1.23e-123 1.23e123
+"STRING1" "STRING2" "STRING3" "STRING1" "STRING2" "STRING3"
++ - * / = > >= < <= == != " , ( ) ; ( )
+//comment1 
+/*comment2*/
+/*comment3
+abcddd*/
+

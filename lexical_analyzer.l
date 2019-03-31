@@ -4,14 +4,16 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#define NO_KEYWORDS 7
+#define ERROR_CODE 11
+
+#define NO_KEYWORDS 8
 #define ID_LENGTH 50 
 #define NO_OPERATOR 11
 #define NO_SYMBOL 7
 
 #define INT_MAX_LENGTH 10
 #define STRING_LEGNTH 256
-
+#define IDENTIFER_MAX_LENGTH 16
 struct symbol{
 	char name[ID_LENGTH]; //변수 이름 저장
 	void* address; //주소값 저장 (변수의 실제 값을 저장하고 있는 주소
@@ -39,10 +41,10 @@ struct symbol_table st;
 struct string_table sst;
 
 char *keyword[NO_KEYWORDS] = {
-	"double", "else","if","int","return", "while", "print"
+	"double", "else","if","int","return", "while", "print", "str"
 };
 char *keytoken[NO_KEYWORDS] = {
-	"DOUBLE", "ELSE", "IF", "INT", "RETURN", "WHILE", "PRINT"
+	"DOUBLE", "ELSE", "IF", "INT", "RETURN", "WHILE", "PRINT", "STR"
 };
 
 char *operator[NO_OPERATOR] = {
@@ -66,94 +68,101 @@ char *symboltoken[NO_SYMBOL] = {
 
 
 %}
-
-IDENTIFIER		[a-zA-Z_][a-zA-Z0-9_]*
+BLANK			" "+|[\t\n]+
+IDENTIFIER		([a-zA-Z]|(_+[0-9A-Za-z]))[_A-Za-z0-9]*
 INTEGER			0|([1-9][0-9]*)
-DOUBLE			-?(([0-9]+)|([0-9]*\.[0-9]+))([Ee][-+]?[0-9]+)?
+DOUBLE			(([0-9]+)|([0-9]*\.[0-9]+))([Ee][-+]?[0-9]+)?
 STRING			\"([^\"\\]|\\.)*\"
-OPERATOR		"+"|"-"|"*"|"/"|"="|">"|">="|"<"|"<="|"=="|"!="
+OPERATOR		([\+\-\*\/])|(\!\=)|([<>\=]\=?)
 SYMBOL			\"|\,|\(|\)|\{|\}|\;
-COMMENT			\/(\*([^\*]|((\*)+[^\*\/]))*(\*)+\/|(\/[^\n]*\n)) 
-
+COMMENT			\/(\*([^\*]|((\*)+[^\*\/]))*(\*)+\/|(\/[^\n]*\n))
+EXCEPTION		.|\n
 %%
-
+{BLANK}			{}
 {IDENTIFIER}	{ 
-					int found = 0;
-					int index = 0;
-					int symbol_index=0;
+					int found = 0; // SYMBOL 찾았는지 확인
+					int index = 0; // yytext가 keyword인지 확인하기위함
+					int symbol_index=0; //Symbol_table에서 symbol의 위치
+					
+					int st_index=0; 
 
-					int st_index=0;
+					int length = yyleng;
+					char tmp[IDENTIFER_MAX_LENGTH+1];
 					struct symbol* sb = NULL;
 					struct symbol* new = NULL;	
 					for(index=0; index<NO_KEYWORDS; index++)
 						if(!strcmp(yytext, keyword[index]))
 							break;
 					if(index<NO_KEYWORDS)
-						printf("< %s, >\t %s\n",keytoken[index],yytext); 
-					else 
+						printf("<%s, >\t\t\t\t %s\n",keytoken[index],yytext); 
+					else //IDENRIFER일 경우
 					{
-						if(st.size != 0)
+						//ID 길이 16로 Cut
+						if(length > IDENTIFER_MAX_LENGTH)
 						{
-							sb = st.first_symbol;
-							//symbol table 검사
-							for(st_index =0; st_index< st.size; ++st_index)
+							strncpy(tmp, yytext, IDENTIFER_MAX_LENGTH);
+							tmp[IDENTIFER_MAX_LENGTH] = '\0';
+							length = IDENTIFER_MAX_LENGTH;
+							yytext = tmp;
+						}
+						//ID가 _로 만 이루어졌는지 확인
+							if(st.size != 0)
 							{
-								if(!strcmp(sb->name, yytext))
+								sb = st.first_symbol;
+								//symbol table 검사
+								for(st_index =0; st_index< st.size; ++st_index)
 								{
-									found = 1;
-									symbol_index = st_index+1;
-									break;
+									if(!strcmp(sb->name, yytext))
+									{
+										found = 1;
+										symbol_index = st_index+1;
+										break;
+									}
+									if(sb->next != NULL) sb = sb->next;
 								}
-								if(sb->next != NULL) sb = sb->next;
+								if(!found)
+								{
+									new = (struct symbol*)malloc(sizeof(struct symbol));
+									//초기화
+									strcpy(new->name, yytext);
+									new->next = NULL;
+									new->address = NULL;
+									new->type = 0;
+
+									sb->next = new;
+									st.size++;
+									symbol_index = st.size;
+								}
 							}
-							if(!found)
-							{
+							else
+							{	
 								new = (struct symbol*)malloc(sizeof(struct symbol));
 								//초기화
 								strcpy(new->name, yytext);
 								new->next = NULL;
 								new->address = NULL;
-								new->type = 0;
-
-								sb->next = new;
+								new->type=0;
+								st.first_symbol = new;
 								st.size++;
 								symbol_index = st.size;
 							}
-						}
-						else
-						{
-							
-							new = (struct symbol*)malloc(sizeof(struct symbol));
-							//초기화
-							strcpy(new->name, yytext);
-							new->next = NULL;
-							new->address = NULL;
-							new->type=0;
-							st.first_symbol = new;
-							st.size++;
-							symbol_index = st.size;
-						}
-						printf("<ID,%d>\t\t %s\n",symbol_index, yytext);
+						printf("<ID,%d>\t\t\t\t %s\n",symbol_index, yytext);	
 					}
 				}
 {INTEGER}		{
 					int length = yyleng;
-					char tmp[10];
+					char tmp[INT_MAX_LENGTH+1];
 					int num;
 					if(length > INT_MAX_LENGTH)
 					{
-						strncpy(tmp, yytext, INT_MAX_LENGTH);
-						num  = atoi(tmp);
-					}
-					else
-					{
-						num = atoi(yytext);
+						strcpy(tmp, yytext+length-10);
+						tmp[INT_MAX_LENGTH] = '\0';
+						strcpy(yytext, tmp);
 					}
 					//printf("LENGTH: %d", length);
-					printf("<INTEGER,%d>\n", num);
-					
+					printf("<INTEGER,%s>\t\t\t\t %s\n", yytext, yytext);
 				}
-{DOUBLE}		printf("<DOUBLE,%s>\n", yytext);
+{DOUBLE}		{printf("<DOUBLE,%s>\t\t\t\t %s\n", yytext,yytext);}
 {STRING}		{
 					
 					int found = 0;
@@ -200,9 +209,9 @@ COMMENT			\/(\*([^\*]|((\*)+[^\*\/]))*(\*)+\/|(\/[^\n]*\n))
 							new->address = NULL;
 							sst.first_symbol = new;
 							sst.size++;
-							symbol_index = st.size;
+							symbol_index = sst.size;
 					}
-						printf("<STRING,%d>\t\t %s\n",symbol_index,yytext);
+						printf("<STRING,%d>\t\t\t\t %s\n",symbol_index,yytext);
 				}
 {OPERATOR}		{
 					int index =0 ;
@@ -210,7 +219,7 @@ COMMENT			\/(\*([^\*]|((\*)+[^\*\/]))*(\*)+\/|(\/[^\n]*\n))
 						if(!strcmp(yytext, operator[index]))
 							break;
 					if(index<NO_OPERATOR)
-						printf("<%s, >\t\t %s\n", operatortoken[index], yytext);
+						printf("<%s, >\t\t\t\t %s\n", operatortoken[index], yytext);
 				}	
 {SYMBOL}		{
 					int index = 0;
@@ -218,11 +227,13 @@ COMMENT			\/(\*([^\*]|((\*)+[^\*\/]))*(\*)+\/|(\/[^\n]*\n))
 					if(!strcmp(yytext, symbol[index]))
 						break;
 					if(index<NO_SYMBOL)
-						printf("<%s, >\t\t %s\n",  symboltoken[index], yytext);
+						printf("<%s, >\t\t\t\t %s\n",  symboltoken[index], yytext);
 				}
 {COMMENT}		{
-					printf("<COMMENT>\t\t %s\n", yytext);
+					printf("<COMMENT>\t\t\t\t %s\n", yytext);
 				}
+{EXCEPTION}		{printf("<ERROR>\t\t\t\t %s\n", yytext);}
+
 %%
 //Print Symbol Table
 void print_st();
@@ -247,9 +258,9 @@ int main (int argc, char *argv[])
 		}
 		yyin = file;
 	}
-	printf("TOKEN\t\t LEXEME\n");
+	printf("TOKEN\t\t\t\t LEXEME\n");
 	yylex();
-
+	
 	print_st();
 	print_sst();
 }
@@ -261,7 +272,7 @@ void print_st(){
 		sb = st.first_symbol;
 	for(st_idx=0; st_idx < st.size; st_idx++)
 	{
-		printf("%d\t %s\n",st_idx, sb->name);
+		printf("%d\t %s\n",st_idx+1, sb->name);
 		if(sb->next !=NULL)
 			sb=sb->next;
 	}
@@ -275,7 +286,7 @@ void print_sst(){
 		sb = sst.first_symbol;
 	for(sst_idx=0; sst_idx < sst.size; sst_idx++)
 	{
-		printf("%d\t %s\n", sst_idx,sb->name);
+		printf("%d\t %s\n", sst_idx+1,sb->name);
 		if(sb->next !=NULL)
 			sb=sb->next;
 	}
