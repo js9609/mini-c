@@ -6,7 +6,7 @@
 
 #define ERROR_CODE 11
 
-#define NO_KEYWORDS 8
+#define NO_KEYWORDS 7
 #define ID_LENGTH 50 
 #define NO_OPERATOR 11
 #define NO_SYMBOL 7
@@ -41,23 +41,23 @@ struct symbol_table st;
 struct string_table sst;
 
 char *keyword[NO_KEYWORDS] = {
-	"double", "else","if","int","return", "while", "print", "str"
+	"int", "double", "str", "if", "while", "return", "print"
 };
 char *keytoken[NO_KEYWORDS] = {
-	"DOUBLE", "ELSE", "IF", "INT", "RETURN", "WHILE", "PRINT", "STR"
+	"INT", "DOUBLE", "STR", "IF", "WHILE", "RETURN", "PRINT"
 };
 
 char *operator[NO_OPERATOR] = {
-	"=", ">", "<", "==", "!=", ">=",
-	"<=",
 	"+", "-", 
-	"*", "/"
+	"*", "/",
+	"=", ">", "<", "==", "!=", ">=",
+	"<="
 	};
 char *operatortoken[NO_OPERATOR] = {
-	"EQ", "GT", "LT", "IQ", "NQ", "GE",
-	"LE",
 	"PLUS", "MINUS",
-	"MULTI", "DIV"
+	"MULTI", "DIV",
+	"EQ", "GT", "LT", "IQ", "NQ", "GE",
+	"LE"
 	};
 char *symbol[NO_SYMBOL] = {
 	"(", ")", "{", "}",	",", ";","\""
@@ -264,6 +264,7 @@ int main (int argc, char *argv[])
 	print_st();
 	print_sst();
 }
+//PRINT SYMBOL TABLE
 void print_st(){
 	int st_idx = 0;
 	struct symbol* sb =NULL;
@@ -278,6 +279,7 @@ void print_st(){
 	}
 	printf("\n");
 }
+//PRINT STRING TABLE
 void print_sst(){
 	int sst_idx = 0;
 	struct string_symbol* sb =NULL;
