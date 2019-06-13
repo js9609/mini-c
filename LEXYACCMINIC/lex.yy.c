@@ -351,8 +351,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 10
-#define YY_END_OF_BUFFER 11
+#define YY_NUM_RULES 25
+#define YY_END_OF_BUFFER 26
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -360,31 +360,31 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[42] =
+static const flex_int16_t yy_accept[48] =
     {   0,
-        0,    0,   11,    9,    1,    1,    9,    7,    7,    6,
-        9,    6,    3,    3,    6,    2,    9,    1,    1,    6,
-        0,    5,    0,    4,    0,    0,    0,    4,    0,    3,
-        6,    2,    2,    0,    0,    0,    0,    8,    0,    4,
-        0
+        0,    0,   26,   24,    1,   20,   24,   21,   22,    4,
+        2,    3,    5,   24,   17,   23,    7,    6,    9,   19,
+       19,   19,   19,   19,    1,   12,    0,   17,    8,   11,
+       10,   19,   19,   13,   19,   19,   18,   19,   19,   19,
+        0,   14,   19,   19,   15,   16,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
+        1,    1,    2,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    4,    5,    6,    1,    1,    1,    1,    1,    7,
-        8,    9,   10,   11,   10,   12,   13,   14,   15,   15,
-       15,   15,   15,   15,   15,   15,   15,    1,   16,   17,
-       18,   17,    1,    1,   19,   19,   19,   19,   20,   19,
-       19,   19,   19,   19,   19,   19,   19,   19,   19,   19,
-       19,   19,   19,   19,   19,   19,   19,   19,   19,   19,
-        1,   21,    1,    1,   22,    1,   19,   19,   19,   19,
+        1,    2,    4,    1,    1,    1,    1,    1,    1,    5,
+        6,    7,    8,    1,    9,   10,   11,   12,   13,   13,
+       13,   13,   13,   13,   13,   13,   13,    1,   14,   15,
+       16,   17,    1,    1,   18,   18,   18,   18,   18,   18,
+       18,   18,   18,   18,   18,   18,   18,   18,   18,   18,
+       18,   18,   18,   18,   18,   18,   18,   18,   18,   18,
+        1,    1,    1,    1,   18,    1,   18,   18,   18,   18,
 
-       20,   19,   19,   19,   19,   19,   19,   19,   19,   19,
-       19,   19,   19,   19,   19,   19,   19,   19,   19,   19,
-       19,   19,   23,    1,   24,    1,    1,    1,    1,    1,
+       19,   20,   18,   21,   22,   18,   18,   23,   18,   24,
+       18,   25,   18,   26,   27,   28,   18,   18,   29,   18,
+       18,   18,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -401,61 +401,59 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static const YY_CHAR yy_meta[25] =
+static const YY_CHAR yy_meta[30] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    2,    2,    1,    1,    1,    2,    2,
-        1,    2,    1,    1
+        1,    2,    2,    1,    1,    1,    1,    2,    2,    2,
+        2,    2,    2,    2,    2,    2,    2,    2,    2
     } ;
 
-static const flex_int16_t yy_base[47] =
+static const flex_int16_t yy_base[49] =
     {   0,
-        0,    0,   76,   77,   23,   71,   56,   21,   77,   77,
-       14,   21,   31,   17,   55,    0,   50,   33,   67,   77,
-       27,   77,   67,   24,   60,   65,   26,    0,   39,    0,
-       77,    0,    0,   45,   46,   43,   47,   77,   43,   45,
-       77,   60,   45,   35,   62,   64
+        0,    0,   62,   63,   59,   63,   44,   63,   63,   63,
+       63,   63,   63,   49,   20,   63,   42,   41,   40,    0,
+       32,   34,   27,   31,   49,   63,   22,   26,   63,   63,
+       63,    0,   23,    0,   27,   26,   28,   28,   22,   22,
+       30,    0,   16,   18,    0,    0,   63,   29
     } ;
 
-static const flex_int16_t yy_def[47] =
+static const flex_int16_t yy_def[49] =
     {   0,
-       41,    1,   41,   41,   41,   41,   41,   42,   41,   41,
-       41,   41,   41,   13,   41,   43,   44,   41,   41,   41,
-       42,   41,   42,   41,   45,   46,   41,   13,   41,   14,
-       41,   43,   43,   44,   45,   45,   46,   41,   41,   41,
-        0,   41,   41,   41,   41,   41
+       47,    1,   47,   47,   47,   47,   47,   47,   47,   47,
+       47,   47,   47,   47,   47,   47,   47,   47,   47,   48,
+       48,   48,   48,   48,   47,   47,   47,   47,   47,   47,
+       47,   48,   48,   48,   48,   48,   47,   48,   48,   48,
+       47,   48,   48,   48,   48,   48,    0,   47
     } ;
 
-static const flex_int16_t yy_nxt[102] =
+static const flex_int16_t yy_nxt[93] =
     {   0,
-        4,    5,    5,    6,    7,    8,    9,    9,   10,   10,
-        9,   11,   12,   13,   14,    9,   15,   15,   16,   16,
-        4,   17,    9,    9,   18,   18,   22,   24,   24,   25,
-       30,   30,   22,   26,   18,   18,   33,   24,   24,   24,
-       24,   23,   27,   29,   28,   28,   32,   23,   39,   38,
-       29,   36,   40,   40,   36,   38,   40,   40,   40,   40,
-       21,   21,   35,   35,   37,   37,   34,   38,   36,   41,
-       19,   34,   31,   20,   19,   41,    3,   41,   41,   41,
-       41,   41,   41,   41,   41,   41,   41,   41,   41,   41,
-       41,   41,   41,   41,   41,   41,   41,   41,   41,   41,
+        4,    5,    6,    7,    8,    9,   10,   11,   12,    4,
+       13,   14,   15,   16,   17,   18,   19,   20,   21,   20,
+       20,   22,   20,   20,   23,   20,   20,   20,   24,   27,
+       32,   28,   28,   37,   37,   27,   46,   28,   28,   41,
+       37,   41,   37,   45,   44,   43,   42,   40,   39,   38,
+       25,   36,   35,   34,   33,   31,   30,   29,   27,   26,
+       25,   47,    3,   47,   47,   47,   47,   47,   47,   47,
+       47,   47,   47,   47,   47,   47,   47,   47,   47,   47,
+       47,   47,   47,   47,   47,   47,   47,   47,   47,   47,
+       47,   47
 
-       41
     } ;
 
-static const flex_int16_t yy_chk[102] =
+static const flex_int16_t yy_chk[93] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    5,    5,    8,   11,   11,   12,
-       14,   14,   21,   12,   18,   18,   44,   24,   24,   27,
-       27,    8,   13,   24,   13,   13,   43,   21,   29,   37,
-       13,   36,   29,   29,   35,   36,   39,   39,   40,   40,
-       42,   42,   45,   45,   46,   46,   34,   26,   25,   23,
-       19,   17,   15,    7,    6,    3,   41,   41,   41,   41,
-       41,   41,   41,   41,   41,   41,   41,   41,   41,   41,
-       41,   41,   41,   41,   41,   41,   41,   41,   41,   41,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,   15,
+       48,   15,   15,   27,   27,   28,   44,   28,   28,   37,
+       37,   41,   41,   43,   40,   39,   38,   36,   35,   33,
+       25,   24,   23,   22,   21,   19,   18,   17,   14,    7,
+        5,    3,   47,   47,   47,   47,   47,   47,   47,   47,
+       47,   47,   47,   47,   47,   47,   47,   47,   47,   47,
+       47,   47,   47,   47,   47,   47,   47,   47,   47,   47,
+       47,   47
 
-       41
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -472,78 +470,50 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "lexical_analyzer.l"
-#line 2 "lexical_analyzer.l"
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <ctype.h>
+#line 1 "minic.l"
+#line 2 "minic.l"
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include "yminic.tab.h"
+	#include "struct.h"
 
-#define ERROR_CODE 11
-
-#define NO_KEYWORDS 7
-#define ID_LENGTH 50 
-#define NO_OPERATOR 11
-#define NO_SYMBOL 7
-
-#define INT_MAX_LENGTH 10
-#define STRING_LEGNTH 256
-#define IDENTIFER_MAX_LENGTH 16
-struct symbol{
-	char name[ID_LENGTH]; //변수 이름 저장
-	void* address; //주소값 저장 (변수의 실제 값을 저장하고 있는 주소
-	int type; //어떤 Type인지 저장
-	struct symbol* next; //Symbol들을 Linked List로 구현하기 위함
-};
-struct string_symbol{
-	char name[STRING_LEGNTH];
-	void* address;
-	struct string_symbol* next;
-};
-
-struct symbol_table{
-	int size;
-	struct symbol* first_symbol;
-};
-struct string_table{
-	int size;
-	struct string_symbol* first_symbol;
-};
-
-//심볼 테이블
-struct symbol_table st;
-//스트링 테이블
-struct string_table sst;
-
-char *keyword[NO_KEYWORDS] = {
-	"int", "double", "str", "if", "while", "return", "print"
-};
-char *keytoken[NO_KEYWORDS] = {
-	"INT", "DOUBLE", "STR", "IF", "WHILE", "RETURN", "PRINT"
-};
-
-char *operator[NO_OPERATOR] = {
-	"+", "-", 
-	"*", "/",
-	"=", ">", "<", "==", "!=", ">=",
-	"<="
-	};
-char *operatortoken[NO_OPERATOR] = {
-	"PLUS", "MINUS",
-	"MULTI", "DIV",
-	"EQ", "GT", "LT", "IQ", "NQ", "GE",
-	"LE"
-	};
-char *symbol[NO_SYMBOL] = {
-	"(", ")", "{", "}",	",", ";","\""
-	};
-char *symboltoken[NO_SYMBOL] = {
-	"LPAREN", "RPAREN", "LBRACE", "RBRACE", "COMMA", "SEMICOLON", "QUOTES"
-	};
-
-
-#line 546 "lex.yy.c"
-#line 547 "lex.yy.c"
+	void set(char* symbol);
+	extern int yyerror(char *);
+#line 483 "lex.yy.c"
+#line 12 "minic.l"
+	/*************************************************************************
+	 *																		 *
+	 * 변수(Identifier) 에 대한 정규 표현식									         *
+	 *																		 *
+	 *************************************************************************/
+	/**************************************************************************
+	 *																		  *
+	 * 정수 상수에 대한 정규 표현식											          *
+	 *																		  *
+	 **************************************************************************/
+	/**************************************************************************
+	 *																		  *
+	 * 실수 상수에 대한 정규 표현식											          *
+	 *																		  *
+	 **************************************************************************/
+	/***************************************************************************
+	 *																		   *
+	 * 구획 문자(delimiter)에 대한 정규 표현식								           *
+	 *																		   *
+	 ***************************************************************************/
+	/******************************************************************************
+	 *																			  *
+	 * 변수(Identifier)가 underscore만 이루어진 예외적인 경우를 처리하기 위한 	                  * 
+	 * 정규 표현식																      *
+	 *																			  *
+	 ******************************************************************************/
+	/**************************************************************************
+	 *																		  *
+	 * 변수(Identifier)의 첫 글자가 숫자로 시작하는 예외적인 경우를			                  *
+	 * 처리하기 위한 정규 표현식											              * 
+	 *																		  *
+	 **************************************************************************/
+#line 517 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -760,9 +730,16 @@ YY_DECL
 		}
 
 	{
-#line 80 "lexical_analyzer.l"
+#line 58 "minic.l"
 
-#line 766 "lex.yy.c"
+
+	/**************************************************************************** 
+	 *																		    *
+	 * 탭(Tab, \t)이나 캐리지 리턴(Carriage return, \r)으로 이루어진                       *
+	 * 공백을 무시하기 위한 rule.												        *
+	 *																			*
+	 ****************************************************************************/
+#line 743 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -789,13 +766,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 42 )
+				if ( yy_current_state >= 48 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 77 );
+		while ( yy_base[yy_current_state] != 63 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -820,206 +797,156 @@ do_action:	/* This label is used only to access EOF actions. */
 			goto yy_find_action;
 
 case 1:
-/* rule 1 can match eol */
 YY_RULE_SETUP
-#line 81 "lexical_analyzer.l"
-{}
+#line 66 "minic.l"
+;
 	YY_BREAK
+/****************************************************************************
+	 *																		    *
+	 * 2차 과제에서 사용되는 연산자에 대한 rule.							                *
+	 *																			*
+	 ****************************************************************************/
 case 2:
 YY_RULE_SETUP
-#line 82 "lexical_analyzer.l"
-{ 
-					int found = 0; // SYMBOL 찾았는지 확인
-					int index = 0; // yytext가 keyword인지 확인하기위함
-					int symbol_index=0; //Symbol_table에서 symbol의 위치
-					
-					int st_index=0; 
-
-					int length = yyleng;
-					char tmp[IDENTIFER_MAX_LENGTH+1];
-					struct symbol* sb = NULL;
-					struct symbol* new = NULL;	
-					for(index=0; index<NO_KEYWORDS; index++)
-						if(!strcmp(yytext, keyword[index]))
-							break;
-					if(index<NO_KEYWORDS)
-						printf("<%s, >\t\t\t\t %s\n",keytoken[index],yytext); 
-					else //IDENRIFER일 경우
-					{
-						//ID 길이 16로 Cut
-						if(length > IDENTIFER_MAX_LENGTH)
-						{
-							strncpy(tmp, yytext, IDENTIFER_MAX_LENGTH);
-							tmp[IDENTIFER_MAX_LENGTH] = '\0';
-							length = IDENTIFER_MAX_LENGTH;
-							yytext = tmp;
-						}
-						//ID가 _로 만 이루어졌는지 확인
-							if(st.size != 0)
-							{
-								sb = st.first_symbol;
-								//symbol table 검사
-								for(st_index =0; st_index< st.size; ++st_index)
-								{
-									if(!strcmp(sb->name, yytext))
-									{
-										found = 1;
-										symbol_index = st_index+1;
-										break;
-									}
-									if(sb->next != NULL) sb = sb->next;
-								}
-								if(!found)
-								{
-									new = (struct symbol*)malloc(sizeof(struct symbol));
-									//초기화
-									strcpy(new->name, yytext);
-									new->next = NULL;
-									new->address = NULL;
-									new->type = 0;
-
-									sb->next = new;
-									st.size++;
-									symbol_index = st.size;
-								}
-							}
-							else
-							{	
-								new = (struct symbol*)malloc(sizeof(struct symbol));
-								//초기화
-								strcpy(new->name, yytext);
-								new->next = NULL;
-								new->address = NULL;
-								new->type=0;
-								st.first_symbol = new;
-								st.size++;
-								symbol_index = st.size;
-							}
-						printf("<ID,%d>\t\t\t\t %s\n",symbol_index, yytext);	
-					}
-				}
+#line 73 "minic.l"
+{return(PLUS);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 152 "lexical_analyzer.l"
-{
-					int length = yyleng;
-					char tmp[INT_MAX_LENGTH+1];
-					int num;
-					if(length > INT_MAX_LENGTH)
-					{
-						strcpy(tmp, yytext+length-10);
-						tmp[INT_MAX_LENGTH] = '\0';
-						strcpy(yytext, tmp);
-					}
-					//printf("LENGTH: %d", length);
-					printf("<INTEGER,%s>\t\t\t\t %s\n", yytext, yytext);
-				}
+#line 74 "minic.l"
+{return(MINUS);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 165 "lexical_analyzer.l"
-{printf("<DOUBLE,%s>\t\t\t\t %s\n", yytext,yytext);}
+#line 75 "minic.l"
+{return(MUL);}
 	YY_BREAK
 case 5:
-/* rule 5 can match eol */
 YY_RULE_SETUP
-#line 166 "lexical_analyzer.l"
-{
-					
-					int found = 0;
-					int symbol_index=0;
-					int sst_index=0;
-					struct string_symbol* sb = NULL;
-					struct string_symbol* new = NULL;	
-					if(sst.size != 0)
-					{
-							sb = sst.first_symbol;
-							//symbol table 검사
-							for(sst_index =0; sst_index< sst.size; ++sst_index)
-							{
-								if(!strcmp(sb->name, yytext))
-								{
-									found = 1;
-									symbol_index = sst_index+1;
-									break;
-								}
-								if(sb->next != NULL) sb = sb->next;
-							}
-							//table에 포함되지 않았다면
-							if(!found)
-							{
-								new = (struct string_symbol*)malloc(sizeof(struct string_symbol));
-								//초기화
-								strcpy(new->name, yytext);
-								new->next = NULL;
-								new->address = NULL;
-
-								sb->next = new;
-								sst.size++;
-								symbol_index = sst.size;
-							}
-					}
-					//첫 심볼일 때,
-					else
-					{
-							
-							new = (struct string_symbol*)malloc(sizeof(struct string_symbol));
-							//초기화
-							strcpy(new->name, yytext);
-							new->next = NULL;
-							new->address = NULL;
-							sst.first_symbol = new;
-							sst.size++;
-							symbol_index = sst.size;
-					}
-						printf("<STRING,%d>\t\t\t\t %s\n",symbol_index,yytext);
-				}
+#line 76 "minic.l"
+{return(DIV);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 216 "lexical_analyzer.l"
-{
-					int index =0 ;
-					for(index=0; index<NO_OPERATOR; index++)
-						if(!strcmp(yytext, operator[index]))
-							break;
-					if(index<NO_OPERATOR)
-						printf("<%s, >\t\t\t\t %s\n", operatortoken[index], yytext);
-				}	
+#line 77 "minic.l"
+{return(ASSIGN);}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 224 "lexical_analyzer.l"
-{
-					int index = 0;
-					for(index=0; index<NO_SYMBOL; index++)
-					if(!strcmp(yytext, symbol[index]))
-						break;
-					if(index<NO_SYMBOL)
-						printf("<%s, >\t\t\t\t %s\n",  symboltoken[index], yytext);
-				}
+#line 79 "minic.l"
+{return(LT);}
 	YY_BREAK
 case 8:
-/* rule 8 can match eol */
 YY_RULE_SETUP
-#line 232 "lexical_analyzer.l"
-{
-					printf("<COMMENT>\t\t\t\t %s\n", yytext);
-				}
+#line 80 "minic.l"
+{return(LE);}
 	YY_BREAK
 case 9:
-/* rule 9 can match eol */
 YY_RULE_SETUP
-#line 235 "lexical_analyzer.l"
-{printf("<ERROR>\t\t\t\t %s\n", yytext);}
+#line 81 "minic.l"
+{return(GT);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 237 "lexical_analyzer.l"
+#line 82 "minic.l"
+{return(GE);}
+	YY_BREAK
+case 11:
+YY_RULE_SETUP
+#line 83 "minic.l"
+{return(EE);}
+	YY_BREAK
+case 12:
+YY_RULE_SETUP
+#line 84 "minic.l"
+{return(NE);}
+	YY_BREAK
+/****************************************************************************
+	 *																		    *
+	 * 2차 과제에서 사용되는 기타특수문자에 대한 rule.							                *
+	 *																			*
+	****************************************************************************
+	 *																		    *
+	 * 상수에 대한 rule.														    *
+	 *																			*
+	 ****************************************************************************/
+case 13:
+YY_RULE_SETUP
+#line 95 "minic.l"
+{return(IF);}
+	YY_BREAK
+case 14:
+YY_RULE_SETUP
+#line 96 "minic.l"
+{return(ELSE);}
+	YY_BREAK
+case 15:
+YY_RULE_SETUP
+#line 97 "minic.l"
+{return(PRINT);}
+	YY_BREAK
+case 16:
+YY_RULE_SETUP
+#line 98 "minic.l"
+{return(WHILE);}
+	YY_BREAK
+case 17:
+YY_RULE_SETUP
+#line 100 "minic.l"
+{set(yytext); return(INT);}
+	YY_BREAK
+case 18:
+YY_RULE_SETUP
+#line 101 "minic.l"
+{set(yytext); return(REAL);}
+	YY_BREAK
+/****************************************************************************
+	 *																		    *
+	 * 변수 대한 rule.															    *
+	 *																		 	*
+	 ****************************************************************************/
+case 19:
+YY_RULE_SETUP
+#line 108 "minic.l"
+{set(yytext); return(ID);}
+	YY_BREAK
+/****************************************************************************
+	 *																		    *
+	 * 위에서 정의한 rule 제외한 나머지는 모두 Lexical Error로 처리하는 rule.	                *
+	 *																			*
+	 ****************************************************************************/
+case 20:
+/* rule 20 can match eol */
+YY_RULE_SETUP
+#line 116 "minic.l"
+{}
+	YY_BREAK
+case 21:
+YY_RULE_SETUP
+#line 118 "minic.l"
+{return yytext[0];}
+	YY_BREAK
+case 22:
+YY_RULE_SETUP
+#line 119 "minic.l"
+{return yytext[0];}
+	YY_BREAK
+case 23:
+YY_RULE_SETUP
+#line 120 "minic.l"
+{return yytext[0];}
+	YY_BREAK
+case 24:
+YY_RULE_SETUP
+#line 122 "minic.l"
+{yyerror("lexical error");}
+	YY_BREAK
+case 25:
+YY_RULE_SETUP
+#line 123 "minic.l"
 ECHO;
 	YY_BREAK
-#line 1023 "lex.yy.c"
+#line 950 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1316,7 +1243,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 42 )
+			if ( yy_current_state >= 48 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1344,11 +1271,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 42 )
+		if ( yy_current_state >= 48 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 41);
+	yy_is_jam = (yy_current_state == 47);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -2024,65 +1951,16 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 237 "lexical_analyzer.l"
+#line 123 "minic.l"
 
-//Print Symbol Table
-void print_st();
-//Print String Table
-void print_sst(); 
-int main (int argc, char *argv[])
+
+void set(char *value)
 {
-	int free_st = 0; //추후 malloc을 통해 생성한 symbol들 free 할 때 사용하기 위함
-	int free_sst =0; //추후 malloc을 통해 생성한 string들 free할 때 사용하기 위함
-	st.size = 0;
-	st.first_symbol = NULL;
-	sst.size=0;
-	sst.first_symbol = NULL;
+	yylval.cval = (char*)malloc(sizeof(yytext));
+	strcpy(yylval.cval, value);
+}
 
-	if (argc > 1)
-	{
-		FILE *file;
-		file = fopen(argv[1], "r");
-		if(!file){
-			fprintf(stderr, "could not open %s\n", argv[1]);
-			exit(1);
-		}
-		yyin = file;
-	}
-	printf("TOKEN\t\t\t\t LEXEME\n");
-	yylex();
-	
-	print_st();
-	print_sst();
-}
-//PRINT SYMBOL TABLE
-void print_st(){
-	int st_idx = 0;
-	struct symbol* sb =NULL;
-	printf("INDEX\t SYMBOLS\n");
-	if(st.size !=0)
-		sb = st.first_symbol;
-	for(st_idx=0; st_idx < st.size; st_idx++)
-	{
-		printf("%d\t %s\n",st_idx+1, sb->name);
-		if(sb->next !=NULL)
-			sb=sb->next;
-	}
-	printf("\n");
-}
-//PRINT STRING TABLE
-void print_sst(){
-	int sst_idx = 0;
-	struct string_symbol* sb =NULL;
-	printf("INDEX\t STRINGS\n");
-	if(sst.size !=0)
-		sb = sst.first_symbol;
-	for(sst_idx=0; sst_idx < sst.size; sst_idx++)
-	{
-		printf("%d\t %s\n", sst_idx+1,sb->name);
-		if(sb->next !=NULL)
-			sb=sb->next;
-	}
-	printf("\n");
-}
+int yywrap (void)
+{return 1;} 
+
 
